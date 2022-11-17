@@ -31,12 +31,12 @@ please enter it in the following box and submit for confirmation:</h3><input typ
    //value inport from index.jsp using localstorage
     document.getElementById('name3').innerHTML = localStorage.getItem("NAME");
     document.getElementById('email3').innerHTML = localStorage.getItem("EMAIL");
+      let count=0;
    //function for opt validation
     function otpvrf(){
     	var otp=document.getElementById("otp").value;
     	//random created otp=1234
     	var sotp="1234";
-         let count=2;
     	console.log(sotp);
     	//if otp is valid then its redirect to the Pixel6 Home page
     	if(otp==sotp){
@@ -44,7 +44,8 @@ please enter it in the following box and submit for confirmation:</h3><input typ
     		 document.getElementById('dsp').innerHTML = "Valid";
     		 //window.open("http://pixel6.co/");
     		 return true;
-    	}else{//if otp is not valid its redirect to 404 error page
+    	}else{
+            //if otp 3 Time is not valid its redirect to 404 error page
     		 count++;
     		 console.log(count);
     		 document.getElementById('dsp').innerHTML = "InValid Please Re-Enter OTP";
