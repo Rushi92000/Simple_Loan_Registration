@@ -52,6 +52,7 @@ please enter it in the following box and submit for confirmation:</h3><input typ
     		 while(count==3){
     			 document.getElementById('dsp').innerHTML = "Validation Failed!'";
     			 window.open("https://atlassianblog.wpengine.com/wp-content/uploads/2017/12/44-incredible-404-error-pages@3x-1560x760.png");
+                  count++;
     		 }
     		 return false;
     		 }
