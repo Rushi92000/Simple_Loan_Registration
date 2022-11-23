@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Confirmation Page</title>
+</head>
+<style>
+         p{
+            color:blue;
+             font-size: 19px;         
+          }
+          r{
+          color:red;
+             font-size: 19px;  
+          }
+</style>
+<body><form onsubmit="return otpvrf()" action="http://pixel6.co/" >
+<h2>Dear <label id="name3"></label>,</h2><br>
+<h3>Thank you for your inquiry. A 4 digit verification number has been sent to your email:<p><label id="email3"></label></p><br>
+please enter it in the following box and submit for confirmation:</h3><input type="text" size="30" id="otp" maxlength="4"/>
+<r><span id="dsp"></span></r>
+<input name="submit" type="submit" value="Submit" style="background-color: green;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px">
+  </form>
+  
+ <script>
+   //value inport from index.jsp using localstorage
+    document.getElementById('name3').innerHTML = localStorage.getItem("NAME");
+    document.getElementById('email3').innerHTML = localStorage.getItem("EMAIL");
+    let count=0;
+	var num=0;
+	num=Math.floor(Math.random() * 9000) + 1000;
+	console.log('OTP='+num);
+   //function for opt validation
+    	function myotpp(){
+    		var otp=document.getElementById("otp").value;
+    		if(otp.length>4){
+       		 document.getElementById('dsp').innerHTML = "Dear User Please Enter 4 Digit OTP Code";
+       		 //window.open("http://pixel6.co/");
+       		 return false;	
+    	}
+    	}
+    function otpvrf(){
+    	var otp=document.getElementById("otp").value;
+    	//random created otp=1234
+    	//console.log('OTP='+sotp);
+    	//if otp is valid then its redirect to the Pixel6 Home page
+    	if(otp==num){
+    		 document.getElementById('dsp').innerHTML = "Valid";
+    		 return true;
+    	}else if(otp==""){
+    		document.getElementById('dsp').innerHTML = "Please Enter OTP do not leave empty";
+    		 return false;
+    	}else{
+    		//if otp is not valid its redirect to 404 error page
+    		 count++;
+    		 console.log(count);
+    		 document.getElementById('dsp').innerHTML = "InValid Please Re-Enter OTP";
+    		 if(count==3){
+    			 document.getElementById('dsp').innerHTML = "Validation Failed!'";
+    			 window.location.href ="https://pixel6.co/about-us/error.html";
+    		 }
+    		 return false;
+    		 }
+    		 
+    	}
+</script>
+</body>
+</html>
